@@ -1,0 +1,35 @@
+@use "./variables" as *;
+
+h1 {
+  text-align: center;
+  margin: 35px;
+}
+main {
+  height: 75%;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+p {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 50px;
+  font-size: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-template-rows: repeat(4, auto);
+  height: 75vh;
+  width: 60vw;
+  // margin: auto;
+}
+
+.gameCard {
+  background: $color-card;
+  height: 75%;
+  width: 75%;
+}
