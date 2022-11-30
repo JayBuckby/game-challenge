@@ -22,7 +22,10 @@ const startGame = () => {
   gameGrid.classList += " grid-border";
   gameButton.innerHTML = "Restart the game";
   allCardValues.forEach((cardValue) => {
-    cardImages.push(cardValue, cardValue);
+    let gameSquare = "../images/image";
+    gameSquare += cardValue.toString();
+    gameSquare += ".png";
+    cardImages.push(gameSquare, gameSquare);
   });
   //Shuffle the contents of the allCardValues array, to randomize the playability of game
 
@@ -36,24 +39,22 @@ const startGame = () => {
             <img class="card-image" src="./images/blankcard.png"</img>
         </div>        
     </div>`;
-    gameGrid.append(card);
+    let temp = cardImages[i];
     card.addEventListener("click", () => {
       card.innerHTML = `<div class="active">
-      <img src="./images/image${cardImages[i]}.png"></img>
-    </div>`;
+      <img src="${temp}"></img>
+      </div>`;
     });
+    gameGrid.append(card);
   }
 };
 
 const restartGame = () => {
-  card.innerHTML = `<div>
-  <div class="blank">
-      <img class="card-image" src="./images/blankcard.png"</img>
-  </div>        
-</div>`;
+  card.innerHTML = "";
+  startGame();
 };
 
 //EVENT LISTENERS
 gameButton.addEventListener("click", startGame);
-console.log(cardImage);
+
 cardImage.addEventListener("click", handleBoxClick);
