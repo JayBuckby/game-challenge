@@ -1,7 +1,8 @@
 // Generate divs dynamically for game cards and populate the grid with them.
 
 const gameGrid = document.querySelector(".grid");
-const gameButton = document.querySelector("button");
+const startButton = document.querySelector("#start-button");
+const restartButton = document.querySelector("#restart-button");
 const gameCard = document.querySelector(".gameCard");
 const cardImage = document.querySelector(".card-image");
 const allCardValues = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -10,17 +11,10 @@ let cardImages = [];
 
 // run function to start game and populate grid
 
-// const handleBoxClick = (event) => {
-//   console.log("this is clicked", event);
-
-//   card.addEventListener("click", () => {
-//     console.log("This is being clicked");
-//   });
-// };
-
 const startGame = () => {
   gameGrid.classList += " grid-border";
-  gameButton.innerHTML = "Restart the game";
+  startButton.className = "hidden-button";
+  restartButton.className = "";
   allCardValues.forEach((cardValue) => {
     let gameSquare = "../images/image";
     gameSquare += cardValue.toString();
@@ -33,14 +27,15 @@ const startGame = () => {
   for (i = 0; i < cardImages.length; i++) {
     const card = document.createElement("div");
     card.className = "gameCard";
-    card.setAttribute("value", i);
+    card.setAttribute("id", i);
     card.innerHTML = `<div>
         <div class="blank">
-            <img class="card-image" src="./images/blankcard.png"</img>
+            <img class="card-image" id="${i}" src="./images/blankcard.png"</img>
         </div>        
     </div>`;
     let temp = cardImages[i];
-    card.addEventListener("click", () => {
+    card.addEventListener("click", (event) => {
+      console.dir(event.target.id);
       card.innerHTML = `<div class="active">
       <img src="${temp}"></img>
       </div>`;
@@ -50,11 +45,13 @@ const startGame = () => {
 };
 
 const restartGame = () => {
-  card.innerHTML = "";
-  startGame();
+  restartButton.className = "hidden-button";
+  startButton.className = "";
+  gameGrid.innerHTML = "";
 };
 
 //EVENT LISTENERS
-gameButton.addEventListener("click", startGame);
+startButton.addEventListener("click", startGame);
+restartButton.addEventListener("click", restartGame);
 
-cardImage.addEventListener("click", handleBoxClick);
+// cardImage.addEventListener("click", handleBoxClick);

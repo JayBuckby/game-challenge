@@ -27,6 +27,10 @@ button {
   margin-bottom: 25px;
 }
 
+.hidden-button {
+  display: none;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 125px);
