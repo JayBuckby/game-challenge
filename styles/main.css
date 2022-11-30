@@ -59,6 +59,9 @@ button {
   border-radius: 20%;
   border: 1px solid #000000;
 }
+.grid .gameCard .match {
+  border: 5px solid green;
+}
 
 .grid-border {
   border: 5px solid white;

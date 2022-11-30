@@ -51,17 +51,12 @@ button {
         border: 1px solid $color-black;
       }
     }
+    .match {
+      border: 5px solid green;
+    }
 
     // .blank {
-    //   height: 125px;
-    //   width: 125px;
-
-    //   img {
-    //     height: 125px;
-    //     width: 125px;
-    //     border-radius: 20%;
-    //     border: 1px solid $color-black;
-    //   }
+    //   background-color: aqua;
     // }
   }
 }
