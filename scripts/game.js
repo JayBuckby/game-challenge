@@ -3,13 +3,23 @@
 const gameGrid = document.querySelector(".grid");
 const gameButton = document.querySelector("button");
 const gameCard = document.querySelector(".gameCard");
+const cardImage = document.querySelector(".card-image");
 const allCardValues = [1, 2, 3, 4, 5, 6, 7, 8];
 
 let cardImages = [];
 
 // run function to start game and populate grid
 
-const runGame = () => {
+// const handleBoxClick = (event) => {
+//   console.log("this is clicked", event);
+
+//   card.addEventListener("click", () => {
+//     console.log("This is being clicked");
+//   });
+// };
+
+const startGame = () => {
+  gameGrid.classList += " grid-border";
   gameButton.innerHTML = "Restart the game";
   allCardValues.forEach((cardValue) => {
     cardImages.push(cardValue, cardValue);
@@ -20,23 +30,30 @@ const runGame = () => {
   for (i = 0; i < cardImages.length; i++) {
     const card = document.createElement("div");
     card.className = "gameCard";
+    card.setAttribute("value", i);
     card.innerHTML = `<div>
         <div class="blank">
-            <img src="./images/blankcard.png"</img>
-        </div>
-        <div class="active">
-            <img src="./images/image${cardImages[i]}.png"></img>
-        </div>
+            <img class="card-image" src="./images/blankcard.png"</img>
+        </div>        
     </div>`;
     gameGrid.append(card);
+    card.addEventListener("click", () => {
+      card.innerHTML = `<div class="active">
+      <img src="./images/image${cardImages[i]}.png"></img>
+    </div>`;
+    });
   }
 };
 
-//EVENT LISTENERS
-gameButton.addEventListener("click", runGame);
-gameCard.addEventListener("toggle", () => {
+const restartGame = () => {
   card.innerHTML = `<div>
-    <div class="inactive">
-        <img src="./images/blankcard.png"
-    </div>`;
-});
+  <div class="blank">
+      <img class="card-image" src="./images/blankcard.png"</img>
+  </div>        
+</div>`;
+};
+
+//EVENT LISTENERS
+gameButton.addEventListener("click", startGame);
+console.log(cardImage);
+cardImage.addEventListener("click", handleBoxClick);
