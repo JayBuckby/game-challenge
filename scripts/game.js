@@ -10,6 +10,7 @@ const allCardValues = [1, 2, 3, 4, 5, 6, 7, 8];
 let cardImages = [];
 let userClickOne = "";
 let userClickTwo = "";
+let matchArray = [];
 
 const shuffleCards = (arr) => {
   return arr.sort(function () {
@@ -45,14 +46,39 @@ const startGame = () => {
       </div>`;
       if (userClickOne === "") {
         userClickOne = imagePath;
+        matchArray.push(imagePath);
       } else if (userClickTwo === "") {
         userClickTwo = imagePath;
+        matchArray.push(imagePath);
+      }
+      if (matchArray.length === 2) {
         if (userClickOne === userClickTwo) {
-          document.getElementById(imagePath).classList.add("match");
+          console.log(matchArray);
+          console.log(document.getElementById(matchArray[0]));
+          console.log(document.getElementById(matchArray[1]));
+          document.getElementById(matchArray[0]).classList.add("active--match");
+          document.getElementById(matchArray[1]).classList.add("active--match");
           userClickOne = "";
           userClickTwo = "";
+          matchArray = [];
         } else {
-          alert("this is not a match");
+          console.log(matchArray);
+          document.getElementById(matchArray[0]).classList.remove("active");
+          document.getElementById(matchArray[1]).classList.remove("active");
+          document.getElementById(matchArray[0]).classList.add("blankcard");
+          document.getElementById(matchArray[1]).classList.add("blankcard");
+          document.getElementById(matchArray[0]).innerHTML = `<div>
+          <div class="blank">
+              <img src="./images/blankcard.png"</img>
+          </div>        
+      </div>`;
+          document.getElementById(matchArray[1]).innerHTML = `<div>
+          <div class="blank">
+              <img src="./images/blankcard.png"</img>
+          </div>        
+      </div>`;
+          matchArray = [];
+          // alert("this is not a match");
           userClickOne = "";
           userClickTwo = "";
         }
