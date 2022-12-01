@@ -43,6 +43,7 @@ const startGame = () => {
       card.innerHTML = `<div id="${imagePath}" class="active">
       <img src="${imagePath}"></img>
       </div>`;
+
       //This is our match/not a match conditions
       if (userClickOne === "") {
         userClickOne = imagePath;
@@ -51,43 +52,44 @@ const startGame = () => {
         userClickTwo = imagePath;
         matchArray.push(imagePath);
       }
-      if (matchArray.length === 2) {
-        if (userClickOne === userClickTwo) {
-          console.log(matchArray);
-          console.log(document.getElementById(matchArray[0]));
-          console.log(document.getElementById(matchArray[1]));
-          document.getElementById(matchArray[0]).classList.add("active--match");
-          document.getElementById(matchArray[1]).classList.add("active--match");
-          userClickOne = "";
-          userClickTwo = "";
-          matchArray = [];
-        } else {
-          console.log(matchArray);
-          document.getElementById(matchArray[0]).classList.remove("active");
-          document.getElementById(matchArray[1]).classList.remove("active");
-          document.getElementById(matchArray[0]).classList.add("blankcard");
-          document.getElementById(matchArray[1]).classList.add("blankcard");
-          document.getElementById(matchArray[0]).innerHTML = `<div>
-          <div class="blank">
-              <img src="./images/blankcard.png"</img>
-          </div>        
-      </div>`;
-          document.getElementById(matchArray[1]).innerHTML = `<div>
-          <div class="blank">
-              <img src="./images/blankcard.png"</img>
-          </div>        
-      </div>`;
-          matchArray = [];
-          alert("this is not a match");
-          userClickOne = "";
-          userClickTwo = "";
+      setTimeout(() => {
+        if (matchArray.length === 2) {
+          if (userClickOne === userClickTwo) {
+            const correctMatch = document.querySelectorAll(
+              `[id="${matchArray[0]}"]`
+            );
+            correctMatch[0].classList.add("active--match");
+            correctMatch[1].classList.add("active--match");
+
+            userClickOne = "";
+            userClickTwo = "";
+            matchArray = [];
+          } else {
+            const inCorrectMatch1 = document.querySelector(
+              `[id="${userClickOne}"]`
+            );
+            inCorrectMatch1.innerHTML = `<div class="blank">
+                  <img src="./images/blankcard.png"/>
+              </div>`;
+
+            const inCorrectMatch2 = document.querySelector(
+              `[id="${userClickTwo}"]`
+            );
+            inCorrectMatch2.innerHTML = `<div class="blank">
+                <img src="./images/blankcard.png"/>
+            </div> `;
+            matchArray = [];
+            // alert("this is not a match");
+            userClickOne = "";
+            userClickTwo = "";
+          }
         }
-      }
+      }, 1000);
     });
     gameGrid.append(card);
   }
 };
-//Clears the grid and allows user to generate a new grid.
+//Clears the grid and allows user to generate a new randomized grid.
 const restartGame = () => {
   restartButton.className = "hidden-button";
   startButton.className = "";
