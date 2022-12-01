@@ -1,5 +1,3 @@
-// Generate divs dynamically for game cards and populate the grid with them.
-
 const gameGrid = document.querySelector(".grid");
 const startButton = document.querySelector("#start-button");
 const restartButton = document.querySelector("#restart-button");
@@ -12,13 +10,14 @@ let userClickOne = "";
 let userClickTwo = "";
 let matchArray = [];
 
+//This
 const shuffleCards = (arr) => {
   return arr.sort(function () {
     return Math.random() - 0.5;
   });
 };
-// run function to start game and populate grid
 
+// run function to start game and populate grid
 const startGame = () => {
   gameGrid.classList += " grid-border";
   startButton.className = "hidden-button";
@@ -29,7 +28,7 @@ const startGame = () => {
     gameSquare += ".png";
     cardImages.push(gameSquare, gameSquare);
   });
-
+  // This function shuffles the images and populates them randomly in the grid
   const shuffledCards = shuffleCards(cardImages);
   for (i = 0; i < shuffledCards.length; i++) {
     const card = document.createElement("div");
@@ -44,6 +43,7 @@ const startGame = () => {
       card.innerHTML = `<div id="${imagePath}" class="active">
       <img src="${imagePath}"></img>
       </div>`;
+      //This is our match/not a match conditions
       if (userClickOne === "") {
         userClickOne = imagePath;
         matchArray.push(imagePath);
@@ -78,7 +78,7 @@ const startGame = () => {
           </div>        
       </div>`;
           matchArray = [];
-          // alert("this is not a match");
+          alert("this is not a match");
           userClickOne = "";
           userClickTwo = "";
         }
@@ -87,7 +87,7 @@ const startGame = () => {
     gameGrid.append(card);
   }
 };
-
+//Clears the grid and allows user to generate a new grid.
 const restartGame = () => {
   restartButton.className = "hidden-button";
   startButton.className = "";
