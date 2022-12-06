@@ -23,7 +23,7 @@ const startGame = () => {
   startButton.className = "hidden-button";
   restartButton.className = "";
   allCardValues.forEach((cardValue) => {
-    let gameSquare = "../images/image";
+    let gameSquare = "./images/image";
     gameSquare += cardValue.toString();
     gameSquare += ".png";
     cardImages.push(gameSquare, gameSquare);
