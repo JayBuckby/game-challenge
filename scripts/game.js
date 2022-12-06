@@ -82,7 +82,7 @@ const startGame = () => {
                 <img src="./images/blankcard.png"/>
             </div> `;
             matchArray = [];
-            debugger;
+
             // alert("this is not a match");
             userClickOne = "";
             userClickTwo = "";
