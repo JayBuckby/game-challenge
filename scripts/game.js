@@ -48,9 +48,11 @@ const startGame = () => {
       if (userClickOne === "") {
         userClickOne = imagePath;
         matchArray.push(imagePath);
+        console.log(userClickOne);
       } else if (userClickTwo === "") {
         userClickTwo = imagePath;
         matchArray.push(imagePath);
+        console.log(userClickTwo);
       }
       setTimeout(() => {
         if (matchArray.length === 2) {
@@ -58,6 +60,7 @@ const startGame = () => {
             const correctMatch = document.querySelectorAll(
               `[id="${matchArray[0]}"]`
             );
+            console.log(userClickOne, userClickTwo);
             correctMatch[0].classList.add("active--match");
             correctMatch[1].classList.add("active--match");
 
@@ -79,6 +82,7 @@ const startGame = () => {
                 <img src="./images/blankcard.png"/>
             </div> `;
             matchArray = [];
+            debugger;
             // alert("this is not a match");
             userClickOne = "";
             userClickTwo = "";
