@@ -16,7 +16,6 @@ const shuffleCards = (arr) => {
     return Math.random() - 0.5;
   });
 };
-
 // run function to start game and populate grid
 const startGame = () => {
   gameGrid.classList += " grid-border";
