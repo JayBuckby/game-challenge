@@ -10,7 +10,6 @@ let userClickOne = "";
 let userClickTwo = "";
 let matchArray = [];
 
-//This
 const shuffleCards = (arr) => {
   return arr.sort(function () {
     return Math.random() - 0.5;
